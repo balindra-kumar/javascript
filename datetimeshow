@@ -1,0 +1,13 @@
+
+
+$(document).ready(function () {
+            setInterval(function () {
+                var date = new Date();
+                $('#clock_wrapper1').html(
+                date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds()
+                );
+            }, 500);
+        })
+
+
+   <%= System.DateTime.Now.ToString("ddd")%>, <%=string.Format("{0: dd MMMM yyyy}", DateTime.Now) %> &nbsp; &nbsp; <i id="clock_wrapper1"></i><i><%=string.Format("{0: tt}", DateTime.Now) %></i>
