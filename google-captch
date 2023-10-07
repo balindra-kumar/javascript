@@ -1,0 +1,14 @@
+
+ <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+ async defer>
+</script>
+<script type="text/javascript">
+  var onloadCallback = function() {
+    alert("grecaptcha is ready!");
+  };
+</script>
+
+
+Key generate google captch = https://www.google.com/recaptcha/admin/site/679624955/setup
+
+ <div class="g-recaptcha" data-sitekey="6Lf7QIIoAAAAACrYJqYwxug4Si0G22-vXUA4Zls1"></div>
