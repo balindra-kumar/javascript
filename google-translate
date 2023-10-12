@@ -1,0 +1,79 @@
+<!-- HTML CODE -->
+
+  <ul class="list-unstyled list-inline ct-topbar__list">
+    <li class="ct-language">Language <i class="fa fa-arrow-down"></i>
+    <ul class="list-unstyled ct-language__dropdown d-flex">
+      <li><a href="#googtrans(en|en)" class="lang-en lang-select" data-lang="en">Eng</a></li>
+      <li><a href="#googtrans(en|hi)" class="lang-es lang-select" data-lang="hi">Hindi</a></li>
+      <li><a href="#googtrans(en|bn)" class="lang-es lang-select" data-lang="bn">Bengali</a></li>
+      <li><a href="#googtrans(en|gu)" class="lang-es lang-select" data-lang="gu">Gujrati</a></li>
+      <li><a href="#googtrans(en|ta)" class="lang-es lang-select" data-lang="ta">Tamilnadu</a></li>
+    </ul>
+    </li>
+  </ul>
+
+
+<!-- Javascript Code Here -->
+
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT}, 'google_translate_element');
+  }
+
+function triggerHtmlEvent(element, eventName) {
+  var event;
+  if (document.createEvent) {
+  event = document.createEvent('HTMLEvents');
+  event.initEvent(eventName, true, true);
+  element.dispatchEvent(event);
+  } else {
+  event = document.createEventObject();
+  event.eventType = eventName;
+  element.fireEvent('on' + event.eventType, event);
+  }
+}
+
+jQuery('.lang-select').click(function() {
+  var theLang = jQuery(this).attr('data-lang');
+  jQuery('.goog-te-combo').val(theLang);
+
+  //alert(jQuery(this).attr('href'));
+  window.location = jQuery(this).attr('href');
+  location.reload();
+
+});
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+
+<!-- Style.css -->
+
+.ct-language__dropdown{
+  margin:0 auto;
+  justify-content: center;
+
+}
+.ct-language__dropdown li a{
+  background:green;
+  color:#fff;
+  padding:10px;
+  margin: 3px;
+}
+.goog-te-gadget{
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
