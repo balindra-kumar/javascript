@@ -1,0 +1,16 @@
+Seo Friendly URL 
+---------------
+
+let subMenuContent = menuName;
+
+ //remove special character and space
+
+ 
+   // Remove special characters, spaces, and symbols
+   let seoUrl = subMenuContent.replace(/[^\w\s-]/g, '')  // Remove special characters, spaces, and symbols
+   .toLowerCase() // Convert to lowercase
+   .replace(/\s+/g, '-') // Replace spaces with dashes and remove multiple dashes
+   .replace(/-+/g, '-') // Remove leading and trailing dashes
+   .replace(/^-+|-+$/g, ''); //// Remove leading and trailing dashes
+   
+   let finalSeoUrl=seoUrl.substring(0, 50); // Limit URL length (adjust the limit as needed)
