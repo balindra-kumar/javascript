@@ -1,0 +1,26 @@
+Page Refresh Stop on Button Click
+
+ button Click Page refresh Stop 
+=====================================
+
+
+ <script lang="javascript" type="text/javascript">     
+        $(document).ready(function () {
+            $(".blue-color").click(function () {
+                $(".change-part").addClass("active");
+            })
+            $("#cancel_button").click(function () {
+                $(".change-part").removeClass("active");
+                return false
+            })
+           
+        });
+        function addcourse() {
+
+        }
+
+        $('form').on('click', 'button', function (evt) {
+            evt.preventDefault();
+            addcourse();
+        });
+    </script>
