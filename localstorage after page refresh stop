@@ -1,0 +1,69 @@
+Localstorage page refresh stop active nav tabs show
+
+
+ <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab1" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Plot Details</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab2" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Lease Details</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab3" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Installment Details</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab4" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Transction Details</button>
+
+        </div>
+    </nav>
+
+    <div class="tab-content p-3 bg-white" id="nav-tabContent">
+        <div class="tab-pane fade" id="tab1" role="tabpanel">
+          <h1>Heading 1</h1>
+        </div>
+
+
+        <div class="tab-pane fade" id="tab2" role="tabpanel">
+            <h1>Heading 2</h1>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="tab3" role="tabpanel">
+            <h1>Heading 3</h1>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="tab4" role="tabpanel">
+            <h1>Heading 4</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+$(document).ready(function(){
+        // Restore active tab from local storage
+         // Restore active tab from local storage
+    var activeTabId = localStorage.getItem('activeTab');
+    if (activeTabId) {
+        $(activeTabId).addClass('show active'); // Add active class to the associated tab pane
+        $('button[data-bs-target="' + activeTabId + '"]').addClass('active'); // Add active class to the associated tab link
+    } else {
+        // If no active tab is stored in local storage, set the first tab as active by default
+        var defaultTabId = $('#nav-tabContent .tab-pane:first').attr('id');
+        $('#' + defaultTabId).addClass('show active');
+        $('button[data-bs-target="#' + defaultTabId + '"]').addClass('active');
+        localStorage.setItem('activeTab', '#' + defaultTabId); // Store the active state in local storage
+    }
+
+    // Handle click event on tab links
+    $(".nav-link[data-bs-toggle='tab']").click(function(e) {
+        e.preventDefault();
+        var tabId = $(this).attr('data-bs-target'); // Get the ID of the associated tab pane
+        
+        // Remove 'active' class from all tab links and tab panes
+        $(".nav-link[data-bs-toggle='tab']").removeClass('active');
+        $(".tab-pane").removeClass('show active');
+        
+        // Add 'active' class to the clicked tab link and associated tab pane
+        $(this).addClass('active');
+        $(tabId).addClass('show active');
+        
+        // Update the active state in local storage
+        localStorage.setItem('activeTab', tabId); // Store the active state in local storage
+    });
+    });
