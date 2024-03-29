@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            background: green;
+        }
+        h2 {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box-area">
+        <div class="box-content">
+            <h2>Heading1</h2>
+        </div>
+        <div class="box-content">
+            <h2>Heading2</h2>
+        </div>
+        <div class="box-content">
+            <h2>Heading3</h2>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const getAll = document.querySelectorAll('.box-content');
+
+            getAll.forEach((boxContent, index) => {
+                const heading = boxContent.querySelector('h2');
+                heading.addEventListener('click', () => {
+                    localStorage.setItem('activeBoxIndex', index);
+                    getAll.forEach((item) => {
+                        item.classList.remove('active');
+                    });
+                    boxContent.classList.add('active');
+                });
+            });
+
+            // Retrieve active state from localStorage on page load
+            const activeBoxIndex = localStorage.getItem('activeBoxIndex');
+            if (activeBoxIndex !== null) {
+                const index = parseInt(activeBoxIndex);
+                const activeBox = getAll[index];
+                if (activeBox) {
+                    activeBox.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
