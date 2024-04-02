@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Picker</title>
+</head>
+<body>
+
+<label for="date">Select Date:</label>
+<input type="date" id="date" name="date" max="" min="" required>
+
+<script>
+    // Get today's date
+    const today = new Date();
+
+    // Calculate the date 3 months from today
+    const threeMonthsLater = new Date();
+    threeMonthsLater.setMonth(today.getMonth() + 3);
+
+    // Format the date in YYYY-MM-DD format
+    const formattedDate = threeMonthsLater.toISOString().split('T')[0];
+
+    // Set the max attribute of the date input to the calculated date
+    document.getElementById('date').setAttribute('max', formattedDate);
+
+     // Get today's date
+     const today1 = new Date();
+
+     // Format the date in YYYY-MM-DD format
+     const formattedDate1 = today.toISOString().split('T')[0];
+ 
+     // Set the min attribute of the date input to today's date
+     document.getElementById('date').setAttribute('min', formattedDate1);
+
+</script>
+
+</body>
+</html>
