@@ -1,0 +1,49 @@
+After Refresh stay on the previous position 
+
+<script type="text/javascript">
+                
+        function getPosition() {
+            
+            document.addEventListener('DOMContentLoaded', function () {
+                
+                    
+               
+                // Check if there's a stored scroll position
+                var storedX = sessionStorage.getItem('scrollX');
+                var storedY = sessionStorage.getItem('scrollY');
+                if (storedX !== null && storedY !== null) {
+                    // Smoothly scroll to the stored position
+                    window.scrollTo({
+                        left: storedX,
+                        top: storedY,
+                        //behavior: 'smooth'
+                    });
+                }
+
+                // Store scroll position when the page is scrolled
+                window.addEventListener('scroll', function () {
+                    var scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+                    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                    sessionStorage.setItem('scrollX', scrollX);
+                    sessionStorage.setItem('scrollY', scrollY);
+                });
+
+                // Update scroll position when an option is selected from the dropdown
+                document.getElementById('ContentPlaceHolder1_ddlFreeHold').addEventListener('change', function () {
+                    var scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+                    var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+                    sessionStorage.setItem('scrollX', scrollX);
+                    sessionStorage.setItem('scrollY', scrollY);
+                });
+            });
+           
+       
+        
+        }
+   </script>
+ <ContentTemplate>
+       <script type="text/javascript">
+                Sys.Application.add_load(getPosition())
+<script type="text/javascript">
+                Sys.Application.add_load(getPosition())
+       </script>
