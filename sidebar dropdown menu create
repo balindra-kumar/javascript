@@ -1,0 +1,69 @@
+   <style>
+       
+        .nav-sub-menu,
+.nav-sub-sub-menu {
+    display: none;
+}
+
+
+    </style>
+    <script>
+
+        
+$(document).ready(function () {
+    // Toggle visibility of menu item's submenu on click
+    $('.nav-menu-item').click(function () {
+        var submenu = $(this).find('.nav-sub-menu');
+        submenu.slideToggle(200);
+        $('.nav-sub-menu').not(submenu).slideUp(200); // Hide other submenus
+    });
+
+    // Toggle visibility of submenu item's sub-submenu on click
+    $('.nav-sub-menu-item').click(function (e) {
+        e.stopPropagation(); // Prevent click event propagation to parent
+        var subsubmenu = $(this).find('.nav-sub-sub-menu');
+        subsubmenu.slideToggle(200);
+        $('.nav-sub-sub-menu').not(subsubmenu).slideUp(200); // Hide other sub-submenus
+    });
+
+    // Hide submenus and sub-submenus when clicking outside the menu
+    $(document).click(function () {
+        $('.nav-sub-menu, .nav-sub-sub-menu').slideUp(200);
+    });
+
+    // Prevent click event propagation when clicking inside the menu
+    $('.nav-menu, .nav-sub-menu, .nav-sub-sub-menu').click(function (e) {
+        e.stopPropagation();
+    });
+});
+
+
+    </script>
+
+                <ul class="nav-menu">
+                    <li class="nav-menu-item">
+                        <a href="#">Menu 1</a>
+                        <ul class="nav-sub-menu">
+                            <li class="nav-sub-menu-item">
+                                <a href="#">Submenu 1.1</a>
+                                <ul class="nav-sub-sub-menu">
+                                    <li><a href="#">Sub-submenu 1.1.1</a></li>
+                                    <li><a href="#">Sub-submenu 1.1.2</a></li>
+                                    <li><a href="#">Sub-submenu 1.1.3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Submenu 1.2</a></li>
+                            <li><a href="#">Submenu 1.3</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="#">Menu 2</a>
+                        <ul class="nav-sub-menu">
+                            <li><a href="#">Submenu 2.1</a></li>
+                            <li><a href="#">Submenu 2.2</a></li>
+                            <li><a href="#">Submenu 2.3</a></li>
+                        </ul>
+                    </li>
+                    <!-- Add more menu items with submenus and sub-submenus as needed -->
+                </ul>
+                
