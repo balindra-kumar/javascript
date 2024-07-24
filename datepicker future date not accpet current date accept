@@ -1,0 +1,35 @@
+Jquery ui datepicker
+  ----------------------
+
+  
+<input placeholder="dd/mm/yyyy" autocomplete="off" class="form-control datepicker text-box single-line hasDatepicker" id="txtRegFromDate" name="FromDate" onpaste="return false" type="text" value="" data-original-title="" title="">
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        // Initialize datepicker
+        $('#txtRegFromDate').datepicker({
+            dateFormat: 'dd/mm/yy',
+            maxDate: 0, // Disable future dates
+            onSelect: function (dateText) {
+                // When date is selected, update the input value
+                $(this).val(dateText);
+            }
+        });
+
+        // Handle blur event
+        $('#txtRegFromDate').on('blur', function () {
+            var enteredDate = $(this).val();
+            var currentDate = $.datepicker.formatDate('dd/mm/yy', new Date());
+
+            // Validate if entered date is in the future
+            var enteredDateObj = $.datepicker.parseDate('dd/mm/yy', enteredDate);
+            var currentDateObj = new Date();
+
+            if (enteredDateObj > currentDateObj) {
+                // If future date is entered, revert to current date
+                $(this).val(currentDate);
+            }
+        });
+    });
+    </script>
