@@ -1,0 +1,21 @@
+//auto type  start script
+(function (e) {
+    var i = 0;
+    var txtget = document.getElementById(e);
+    var txt = txtget.textContent;
+    var speed = 50;
+    txtget.innerHTML = '&nbsp';
+    var textWrite = function () {
+        if (i < txt.length) {
+            txtget.innerHTML += txt.charAt(i);
+            i++;
+        }
+        else {
+            i = 0;
+            txtget.innerHTML = '&nbsp';
+        }
+    };
+    setInterval(textWrite, 300);
+})('typeLine');
+//auto type  End script
+ <span id="typeLine" translate="no">&nbsp;Heritage City</span>
