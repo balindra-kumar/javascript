@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bigtosmall"></div>
+    <script>
+        class SmallerToBigger {
+            constructor(text){
+                this.text = text;
+            }
+            biggerText(){
+                let a = Array.from(this.text);
+                let b = document.getElementsByClassName('bigtosmall');
+               
+                for(let i=0; i<a.length; i++){
+                    let el = document.createElement('span');
+                    el.textContent= a[i];
+                    el.style.fontSize=`${i+16}px`;
+                    b[0].appendChild(el);
+
+                }
+                
+            }
+        }
+        const smalltobig = new SmallerToBigger("A483/389DR");
+        smalltobig.biggerText();
+
+
+
+
+
+        
+    </script>
+</body>
+</html>
