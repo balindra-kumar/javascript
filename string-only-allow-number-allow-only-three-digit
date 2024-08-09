@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+</head>
+<body>
+    <form>
+    <div><input type="text" id="stringonly"></div>
+    <div class="alert"></div>
+    <div><input type="text" id="dateInput"></div>
+    <div><input type="number"></div>
+    <div><input type="number"></div>
+    <input type="submit" value="Submit" id="submit"/>
+    </form>
+    <script>
+           let a = document.getElementById('stringonly');
+           let b = document.getElementById('threeDigit');
+            function check1(){
+                document.getElementById('stringonly').addEventListener('input', (event) => {
+                let check = event.target.value.match(/^[a-zA-Z\s]*$/);
+                if(!check){ 
+                document.querySelector('.alert').innerHTML = "Only alphabets are allowed";
+                a.style.backgroundColor='#f7baba';
+                return a.focus();
+                }
+                if(event.target.value==""){
+                    document.querySelector('.alert').innerHTML = "Please enter the value";
+                }
+                else{
+                    a.style.backgroundColor='#d0ffd0';
+                }
+                })
+                document.getElementById('dateInput').addEventListener('input', (event) => {
+                const b = document.getElementById('dateInput');
+                const alertMessage = document.querySelector('.alert');
+                
+                const input = event.target.value;
+                const regex = /^(0[1-9]|1[0-2])\/(2[0-9])$/;
+
+                // Get current month and year
+                const today = new Date();
+                const currentMonth = today.getMonth() + 1; // Months are zero-indexed
+                const currentYear = today.getFullYear() % 100; // Last two digits of the current year
+
+                // Check if the input matches the MM/YY format
+                const check = input.match(regex);
+                if (!check) {
+                    alertMessage.innerHTML = "Please enter the date in MM/YY format (e.g., 12/24).";
+                    b.style.backgroundColor = '#f7baba';
+                    return b.focus();
+                }
+
+                // Extract the month and year from the input
+                const [inputMonth, inputYear] = input.split('/').map(Number);
+
+                // Check if the input date is in the past
+                if (inputYear < currentYear || (inputYear === currentYear && inputMonth < currentMonth)) {
+                    alertMessage.innerHTML = "The date cannot be in the past. Please enter a current or future date.";
+                    b.style.backgroundColor = '#f7baba';
+                    return b.focus();
+                }
+
+                // If the input is valid
+                alertMessage.innerHTML = "";
+                b.style.backgroundColor = '#d0ffd0';
+            });
+
+
+            }
+            check1();
+            document.getElementById('submit').addEventListener('click',(event)=>{
+            event.preventDefault();
+            if(a.value==""){
+                document.querySelector('.alert').innerHTML = "Please enter the value";
+            }
+           
+        })
+    </script>
+</body>
+</html>
