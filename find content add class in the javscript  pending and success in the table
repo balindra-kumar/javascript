@@ -1,0 +1,54 @@
+let abc = document.querySelectorAll("table tr td:nth-child(3")
+console.log('abc', abc)
+for(let i=0; i<abc.length; i++){
+  console.log(abc[i].textContent)
+  console.log('matching',          abc[i].textContent==="Pending")
+  if(abc[i].textContent==="Pending"){
+    abc[i].classList.add('red')
+  }
+  if(abc[i].textContent==="success"){
+    abc[i].classList.add('green')
+  }if(abc[i].textContent==="warning"){
+    abc[i].classList.add('orange')
+  }
+}
+
+
+<table>
+  <tr>
+    <td>Product</td>
+    <td>Service</td>
+    <td>Pending</td>
+    <td><button>Read More</button></td>
+  </tr>
+   <tr>
+    <td>Product</td>
+    <td>Service</td>
+    <td>success</td>
+    <td><button>Read More</button></td>
+  </tr>
+   <tr>
+    <td>Product</td>
+    <td>Service</td>
+    <td>warning</td>
+    <td><button>Read More</button></td>
+  </tr>
+   <tr>
+    <td>Product</td>
+    <td>Service</td>
+    <td>Pending</td>
+    <td><button>Read More</button></td>
+  </tr>
+   <tr>
+    <td>Product</td>
+    <td>Service</td>
+    <td>success</td>
+    <td><button>Read More</button></td>
+  </tr>
+   <tr>
+    <td>Product</td>
+    <td>Service</td>
+    <td>Pending</td>
+    <td><button>Read More</button></td>
+  </tr>
+</table>
