@@ -1,0 +1,133 @@
+<ul class="nav2 nav-list main-nav2" id="Menu-list">
+                            
+                          
+                            <li>
+                                <a href="#" class="tree-parent-anchor"> Master </a>
+                                  <ul>
+                                      <li> <a href="#"> 2.1 </a></li>
+                                      <li>  <a href="#">Menu 2.2 </a></li>
+                                      <li> <a href="#"> Menu 2.3</a> </li>
+                                      <li>  <a href="#">Menu 2.4</a> </li>
+                                  </ul>
+                            </li>
+                              <li>
+                                <a href="#" class="tree-parent-anchor">Encroachment Removal </a>
+                                  <ul>
+                                      <li> <a href="#"> 2.1 </a></li>
+                                      <li>  <a href="#">Menu 2.2 </a></li>
+                                      <li> <a href="#"> Menu 2.3</a> </li>
+                                      <li>  <a href="#">Menu 2.4</a> </li>
+                                  </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="tree-parent-anchor">Reports </a>
+                                  <ul>
+                                      <li> <a href="#"> 2.1 </a></li>
+                                      <li>  <a href="#">Menu 2.2 </a></li>
+                                      <li> <a href="#"> Menu 2.3</a> </li>
+                                      <li>  <a href="#">Menu 2.4</a> </li>
+                                  </ul>
+                            </li>
+                             <li>
+                                <a href="#" class="tree-parent-anchor">MIS </a>
+                                  <ul>
+                                      <li> <a href="#"> 2.1 </a></li>
+                                      <li>  <a href="#">Menu 2.2 </a></li>
+                                      <li> <a href="#"> Menu 2.3</a> </li>
+                                      <li>  <a href="#">Menu 2.4</a> </li>
+                                  </ul>
+                            </li>
+                          
+                            
+                            
+                          
+                        </ul>
+
+
+<script type="text/javascript" lang="javascript">
+            var treeList = {
+                init: function () {
+                $('.tree-parent-anchor', '#Menu-list').each(function () {
+                    var $a = $(this);
+                    var $li = $a.parent();
+                    if ($a.next().is('ul')) {
+                        var $ul = $a.next();
+                        $a.click(function (e) {
+                            e.preventDefault();
+
+                            // Close other open dropdowns
+                            $('.tree-parent-anchor.active').not($a).removeClass('active').next('ul').slideUp(600);
+
+                            // Toggle the clicked one
+                            $ul.toggle(600);
+                            $a.toggleClass('active');
+                        });
+                    }
+                });
+        }
+    };
+
+            treeList.init();
+    </script>
+
+
+
+ #Menu-list {
+   
+    list-style-type: none;
+}
+
+#Menu-list > li {
+    padding-bottom: 3px;
+    /* margin-bottom: 0.5em; */
+}
+
+#Menu-list  li > a {
+    color: #000;
+    text-decoration: none;
+}
+
+#Menu-list  li > a:hover{
+    color: #fff !important;
+}
+/* Show plus icon only if <a> is followed by a <ul> (dropdown exists) */
+#Menu-list li a:after {
+    content: '+'; 
+    padding-right: 4px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+}
+
+/* If <a> is active, show minus icon */
+#Menu-list li a.active:after {
+    content: '-'; 
+    padding-right: 4px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+}
+
+/* Hide the plus/minus icon if there is no dropdown (no <ul> after <a>) */
+#Menu-list li a:not(:has(+ ul)):after {
+    content: '';
+}
+
+
+
+#Menu-list li ul {
+    padding-left: 0;
+    display: none;
+    list-style-type: none;
+}
+        #Menu-list li ul li a{
+             padding-left: 20px;
+        }
+    #Menu-list li ul li a:hover {
+    background: grey !important;
+    color: #fff;
+    }
+
+
+
+
