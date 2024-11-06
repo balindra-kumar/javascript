@@ -1,0 +1,44 @@
+ $(document).ready(function () {
+            // Restore active tab from local storage
+            // Restore active tab from local storage
+            var activeTabId = localStorage.getItem('activeTab');
+            if (activeTabId) {
+                $(activeTabId).addClass('in active'); // Add active class to the associated tab pane
+                $('a[href="' + activeTabId + '"]').addClass('active'); // Add active class to the associated tab link
+                $('a[href="' + activeTabId + '"]').parent().addClass('active');
+            } else {
+                // If no active tab is stored in local storage, set the first tab as active by default
+                var defaultTabId = $('.tab-content .tab-pane:first').attr('id');
+                $('#' + defaultTabId).addClass('in active');
+                $('a[href="#' + defaultTabId + '"]').addClass('active');
+                localStorage.setItem('activeTab', '#' + defaultTabId); // Store the active state in local storage
+                $('a[href="#Attend"]').parent().addClass('active');
+                console.log("welcome", $('a[href="' + activeTabId + '"]') )
+            }
+
+            // Handle click event on tab links
+            $(".nav-tabs li a[data-toggle='tab']").click(function (e) {
+                e.preventDefault();
+                var tabId = $(this).attr('href'); // Get the ID of the associated tab pane
+
+                // Remove 'active' class from all tab links and tab panes
+                $(".nav-tabs li a[data-toggle='tab']").removeClass('active');
+                $(".tab-pane").removeClass('in active');
+
+                // Add 'active' class to the clicked tab link and associated tab pane
+                $(this).addClass('active');
+                $(tabId).addClass('show active');
+
+                // Update the active state in local storage
+                localStorage.setItem('activeTab', tabId); // Store the active state in local storage
+            });
+        });
+
+<ul class="nav nav-tabs" data-tabs="tabs" id="myTab">
+                                    <li id="id1"><a data-toggle="tab" href="#Attend">Attendance</a></li>
+                                    
+                                    <li id="id2" class="active"><a data-toggle="tab" href="#LeaveInf" class="active">Leave Application</a></li>
+                                </ul>
+
+
+        
