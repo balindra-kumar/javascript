@@ -1,3 +1,60 @@
+Page autometic go to the target tag after click in scrolling table data with id is required to targeted element
+
+    <script type="text/javascript" lang="javascript">
+        // Function to handle click events using event delegation
+        document.addEventListener('click', function (event) {
+          var target = event.target; // Get the clicked element
+    
+          // Save the clicked element's ID or unique identifier
+          if (target.id || target.name) {
+            sessionStorage.setItem('lastClickedElement', target.id || target.name);
+          }
+    
+          // Highlight the clicked element
+          target.classList.add('highlight');
+        });
+    
+        // Function to focus on the last clicked element after page refresh
+        function focusOnLastClickedElement() {
+          var lastClickedElementId = sessionStorage.getItem('lastClickedElement');
+          if (lastClickedElementId) {
+            var element = document.querySelector(`[id="${lastClickedElementId}"]`) || document.querySelector(`[name="${lastClickedElementId}"]`);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              element.focus();
+              element.classList.add('highlight');
+            }
+          }
+        }
+    
+        // Focus on the last clicked element when the page loads
+        window.addEventListener('load', focusOnLastClickedElement);
+    
+        // // Clear the stored element when the page is unloaded
+        // window.addEventListener('beforeunload', function () {
+        //   sessionStorage.removeItem('lastClickedElement');
+        // });
+      </script>
+
+ <input type="submit" value="submit" id="btnsubmit" />
+                                                            </td><td align="center" style="width:15%;">
+
+
+
+
+
+
+
+
+
+=========================================================================================
+
+
+
+
+
+
+
 <script type="text/javascript" lang="javascript">
 
          //After page refresh you are click on any element after page refresh focus 
