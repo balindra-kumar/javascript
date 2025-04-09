@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chosen Auto Position</title>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Chosen CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" />
+
+    <!-- Chosen JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+
+    <style>
+        /* Adjust Chosen dropdown for upward positioning */
+       .chosen-container.chosen-drop-up .chosen-drop {
+            top: auto !important;
+            bottom: 100% !important;
+            margin-bottom: 5px;
+        }
+
+        .chosen-container.chosen-drop-up .chosen-drop{
+            border: 1px solid grey;
+        }
+    </style>
+</head>
+<body>
+
+    <select class="chosen-select">
+        <option value="">Select an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+        <option value="6">Option 6</option>
+        <option value="7">Option 7</option>
+        <option value="8">Option 8</option>
+        <option value="9">Option 9</option>
+        <option value="10">Option 10</option>
+    </select>
+    <div style="height:550px"></div>
+
+    
+    <select class="chosen-select">
+        <option value="">Select an option</option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+        <option value="6">Option 6</option>
+        <option value="7">Option 7</option>
+        <option value="8">Option 8</option>
+        <option value="9">Option 9</option>
+        <option value="10">Option 10</option>
+    </select>
+
+    <script>
+        $(document).ready(function () {
+            $(".chosen-select").chosen({ width: "100%" });
+
+            $(".chosen-select").on("chosen:showing_dropdown", function () {
+                var $chosenContainer = $(this).next(".chosen-container");
+                var dropdown = $chosenContainer.find(".chosen-drop");
+
+                var windowHeight = $(window).height();
+                var selectOffset = $chosenContainer.offset().top;
+                var dropdownHeight = dropdown.outerHeight();
+                var spaceBelow = windowHeight - (selectOffset + $chosenContainer.outerHeight());
+
+                // Automatically determine if dropdown should open above or below
+                if (spaceBelow < dropdownHeight && selectOffset > dropdownHeight) {
+                    $chosenContainer.addClass("chosen-drop-up");
+                } else {
+                    $chosenContainer.removeClass("chosen-drop-up");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
